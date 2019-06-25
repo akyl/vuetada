@@ -2,13 +2,13 @@ var app = new Vue({
   el: '#app',
   data: {
     ws: null,
-    state: true,
+    state: true
   },
   created () {
     this.ws = new WebSocket("ws://pm.tada.team/ws")
     this.ws.onmessage = function(event) {
-      this.$state = JSON.parse(event.data).state === 1
-      console.log(this.$state)
+      app.state = JSON.parse(event.data).state === 1
+      console.log(app.state)
     }
   },
   methods: {
